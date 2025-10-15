@@ -20,7 +20,7 @@ echo "Generated dataset: data/clinical_trial_raw.csv"
 
 # TODO: Save the directory structure to reports/directory_structure.txt
 #       Hint: Use 'ls -la' or 'tree' command
-ls -la > reports/directory_structure.txt
+tree > reports/directory_structure.txt
 echo "Saved directory structure to reports/directory_structure.txt"
 
 chmod +x q1_setup_project.sh
