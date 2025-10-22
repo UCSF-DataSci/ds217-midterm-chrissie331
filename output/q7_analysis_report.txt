@@ -1,0 +1,22 @@
+Report of Key Findings
+========================
+1. Summary by Site:
+Mean of age, bmi and systolic blood pressure by site:
+  site       age       bmi  systolic_bp
+site a 56.364005 25.875183   117.354284
+site b 62.401957 25.706681   117.130675
+site c 57.312108 25.789583   117.978359
+site d 63.491006 25.565682   117.943662
+site e 57.064897 25.476502   117.503080
+
+2. Intervention Group Comparison:
+Mean outcome cvd rate by intervention group:
+intervention_group  mean_outcome_cvd
+           control          0.336530
+       treatment a          0.319482
+       treatment b          0.333633
+Mean adherence_pct by intervention group:
+intervention_group  mean_adherence_pct
+           control           60.621688
+       treatment a           60.210173
+       treatment b           61.009404
