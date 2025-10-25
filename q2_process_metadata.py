@@ -20,7 +20,7 @@ def parse_config(filepath: str) -> dict:
     """
     # TODO: Read file, split on '=', create dict
     config = {}
-    with open("q2_config.txt", "r") as file:
+    with open(filepath, "r") as file:
         for line in file:
             key, value = line.strip().split('=')
             config[key] = value
