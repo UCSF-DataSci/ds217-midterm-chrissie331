@@ -290,13 +290,40 @@ if __name__ == '__main__':
     # print("Test DataFrame created:", test_df.shape)
     # print("Test detect_missing:", detect_missing(test_df))
 
-    test_df = pd.DataFrame({'age': [25, np.nan, 35, 40, np.nan],
-                            'bmi': [22, 25, np.nan, 28, 30]})
-    print("Test DataFrame:")
-    print(test_df)
+    test_df = pd.DataFrame({
+        'age': [25, np.nan, 35, 40, np.nan],
+        'bmi': [22, 25, np.nan, 28, 30],
+        'site': ['A', 'B', 'C', 'D', 'E']})
     
-    print("Missing values per column:")
-    print(detect_missing(test_df))
+    print("Test DataFrame:", test_df.shape)
 
-    print("Filling missing 'age' with mean:")
-    print(fill_missing(test_df, 'age', strategy='mean'))
+    # Test clean_data
+    df_clean = clean_data(test_df, sentinel_value = -999)
+    print("Cleaned dataset:", df_clean)
+    
+    # Test detect_missing
+    print("Missing values per column:", detect_missing(df_clean))
+    
+    # Test fill_missing
+    df_filled = fill_missing(df_clean, 'age', strategy = 'mean')
+    print("After fill_missing for age:", df_filled)
+
+    # Test filter_data
+    filters = [{'column': 'age', 'condition': 'greater_than', 'value': 27 }]
+    df_filtered = filter_data(df_filled, filters)
+    print("After filtering:", df_filtered)
+
+    # Test transform_types
+    type_map = {'site': 'category', 'age': 'numeric'}
+    df_typed = transform_types(df_filtered, type_map)
+    print("After transforming types:", df_typed.dtypes)
+
+    # Test create_bins
+    bins = [0, 30, 50]
+    labels = ['<30', '30-49']
+    df_binned = create_bins(df_typed, 'age', bins, labels)
+    print("After creating bins:", df_binned)
+
+    #Test summarize_by_group
+    df_summary = summarize_by_group(df_binned, 'site', {'age': ['mean', 'count']})
+    print("Summarize by group:", df_summary)
