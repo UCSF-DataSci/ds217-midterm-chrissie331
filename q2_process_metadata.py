@@ -52,23 +52,16 @@ def validate_config(config: dict) -> dict:
     results = {}
     
     # Validate sample_data_rows
-    if isinstance(config.get('sample_data_rows'), int) and config['sample_data_rows'] > 0:
+    if int(config['sample_data_rows']) > 0:
         results['sample_data_rows'] = True
-    else:
-        results['sample_data_rows'] = False
-
+    
 # Validate sample_data_min
-    if isinstance(config.get('sample_data_min'), int) and config['sample_data_min'] >= 1:
+    if int(config['sample_data_min']) >= 1:
         results['sample_data_min'] = True
-    else:
-        results['sample_data_min'] = False  
 
 # Validate sample_data_max
-    if (isinstance(config.get('sample_data_max'), int) and 
-        config['sample_data_max'] > config.get('sample_data_min', 0)):
+    if int(config['sample_data_max']) > int(config['sample_data_min']):
         results['sample_data_max'] = True
-    else:
-        results['sample_data_max'] = False
 
     return results
 
